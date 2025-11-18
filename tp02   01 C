@@ -1,106 +1,36 @@
 
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
+#include <stdlib.h>
 
-/* يقرأ سلسلة بطول أقصى N ويُعيد مؤشرًا على الذاكرة المحجوزة */
-char *LoadString(int N) {
-    char *p = (char*) malloc((N + 1) * sizeof(char)); /* +1 للمحرف '\0' */
-    if (p == NULL) {
-        fprintf(stderr, "Memory allocation failed\n");
-        exit(EXIT_FAILURE);
-    }
-    /* نقرأ سطر كامل - نستخدم fgets لتجنب تجاوز الحد */
-    if (fgets(p, N + 1, stdin) == NULL) {
-        p[0] = '\0'; /* إذا لم يُدخل المستخدم شيء */
-        return p;
-    }
-    /* إزالة '\n' الذي قد تضيفه fgets */
-    size_t len = 0;
-    while (p[len] != '\0') {
-        if (p[len] == '\n') { p[len] = '\0'; break; }
-        len++;
-    }
-    return p;
+char *LoadString(int N);
+int stringlength(char *str);
+ void loadArray(char*p,char arr[]);
+ void reverseArray(char arr[],char rev[],int n);
+ void display Array(char arr[],intn);
+int SumString ASCII(char*p);
+ void reverseString(char*start,char*end);
+int main(){
+char*str;
+int n:
+
+printf("please enter the maximum size of the string:\n");
+scanf("%d",&n);
+getchar();
+str=loadString(n);
+int len=String length(str);
+char arr[len+1],rev[len+1];
+load Array (str,arr);
+printf"\n Original array:");
+Display Array(arr,len);
+Reverse Array(arr,rev,len);
+printf("\n Reversed array:");
+Display Array (rev,len);
+int sum=SumStringASCII(str);
+printf("\Sum of ASCIIvalues (recursive);Reverse String(str,str+len-1);
+printf("String reversed recursively: %s\n",str);
+free(str);
+return0;
 }
 
-/* طول السلسلة بدون استخدام strlen */
-int StringLength(char *str) {
-    int l = 0;
-    while (str[l] != '\0') l++;
-    return l;
-}
 
-/* نسخ محتويات المؤشر p إلى المصفوفة arr (مع افتراض أن arr كبيرة بما فيه الكفاية) */
-void LoadArray(char *p, char arr[]) {
-    int i = 0;
-    while (p[i] != '\0') {
-        arr[i] = p[i];
-        i++;
-    }
-    arr[i] = '\0';
-}
-
-/* إنشاء نسخة مقلوبة في rev من arr بطول n */
-void ReverseArray(char arr[], char rev[], int n) {
-    for (int i = 0; i < n; i++) {
-        rev[i] = arr[n - 1 - i];
-    }
-    rev[n] = '\0';
-}
-
-/* عرض مصفوفة محارف (نستخدم n للتأكد من العرض الصحيح) */
-void DisplayArray(char arr[], int n) {
-    /* نطبع كـ string لأننا ضمنا '\0' في الدوال أعلاه */
-    printf("%s\n", arr);
-}
-
-/* مجموع قيم ASCII للسلسلة — دالة عودية (Recursive) */
-int SumStringASCII(char *p) {
-    if (*p == '\0') return 0;
-    return (int)(unsigned char)(*p) + SumStringASCII(p + 1);
-}
-
-/* عكس السلسلة في مكانها باستخدام مؤشرين (Recursive) */
-void ReverseString(char *start, char *end) {
-    if (start >= end) return;
-    char tmp = *start;
-    *start = *end;
-    *end = tmp;
-    ReverseString(start + 1, end - 1);
-}
-
-int main() {
-    char *str;
-    int n;
-
-    printf("Please enter the maximum size of the string:\n");
-    if (scanf("%d", &n) != 1) {
-        fprintf(stderr, "Invalid input\n");
-        return 1;
-    }
-    getchar(); /* أكل '\n' المتبقي بعد scanf */
-
-    printf("Enter the string (max %d chars):\n", n);
-    str = LoadString(n);
-
-    int len = StringLength(str);
-    char arr[len + 1], rev[len + 1];
-    LoadArray(str, arr);
-
-    printf("\nOriginal array: ");
-    DisplayArray(arr, len);
-
-    ReverseArray(arr, rev, len);
-    printf("Reversed array (by ReverseArray): ");
-    DisplayArray(rev, len);
-
-    int sum = SumStringASCII(str);
-    printf("Sum of ASCII values (recursive): %d\n", sum);
-
-    ReverseString(str, str + len - 1);
-    printf("String reversed recursively: %s\n", str);
-
-    free(str);
-    return 0;
-}
