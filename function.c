@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <string.h>
 char *LoadString(int N) {
     char *p = (char *)malloc((N + 1) * sizeof(char));
     if (p == NULL) return NULL;
