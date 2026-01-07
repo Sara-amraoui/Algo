@@ -10,7 +10,7 @@ typedef struct Product {
 
 typedef struct Node {
     Product Prod;
-    struct Node *next;
+    struct Node *next;;
 } Node;
 
 Node* createEmptyList() {
