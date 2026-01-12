@@ -24,7 +24,7 @@ SNode* push(SNode* top, char ch) {
     SNode* newNode = (SNode*)malloc(sizeof(SNode));
     newNode->data = ch;
     newNode->next = top;
-    return newNode;   // new top
+    return newNode;  
 }
 
 SNode* pop(SNode* top, char *value) {
@@ -35,7 +35,7 @@ SNode* pop(SNode* top, char *value) {
     *value = temp->data;
     top = temp->next;
     free(temp);
-    return top;   // new top
+    return top;   
 }
 
 
