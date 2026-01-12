@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include <ctype.h>
 typedef struct stack{
     struct stack *next;
     char data;
@@ -18,7 +18,7 @@ typedef struct queue{
 }Queue;
 
 
-/* ===== Stack Functions ===== */
+
 
 SNode* push(SNode* top, char ch) {
     SNode* newNode = (SNode*)malloc(sizeof(SNode));
@@ -38,7 +38,7 @@ SNode* pop(SNode* top, char *value) {
     return top;   // new top
 }
 
-/* ===== Queue Functions ===== */
+
 
 void enqueue(Queue *q, char ch) {
     QNode* newNode = (QNode*)malloc(sizeof(QNode));
@@ -69,7 +69,7 @@ void dequeue(Queue *q, char *value) {
 
 
 
-/* ===== Main Program ===== */
+
 
 int main() {
     char text[100];
