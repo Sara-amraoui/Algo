@@ -27,9 +27,9 @@ Node* insertAtBeginning(Node *head, Product newProd) {
     
     if (head==NULL) {
         newNode->next = newNode;
-       return newNode;
+       return newnode;
     } 
-    else {
+
         Node *temp = head;
         while (temp->next != head) {
             temp = temp->next;
@@ -44,11 +44,11 @@ Node* insertAtBeginning(Node *head, Product newProd) {
 
 Node* insertAtEnd(Node *head, Product newProd) {
     Node *newNode = (Node*)malloc(sizeof(Node));
-    newNode->Prod = p;
+    newNode->Prod = newProd;
     
     if (head==NULL) {
         newNode->next = newNode;
-       return newNode
+       return newNode;
  
         Node *temp = head;
         while (temp->next != head) {
@@ -72,10 +72,10 @@ void displayProducts(Node *head) {
   
     do {
         printf("ID: %d, Name: %s, Price: %d\n", 
-               current->Prod.ID, 
-               current->Prod.Name, 
-               current->Prod.Price);
-        current = current->next;
+            temp ->Prod.ID, 
+             temp->Prod.Name, 
+             temp->Prod.Price);
+        temp = temp->next;
     } while (temp!= head);
     
     
@@ -106,10 +106,10 @@ int main() {
    
     
     
-    displaylist(head);
+   printf("\nProducts in circular list:\n");
     
 
-    displayProducts(newList);
+    displayProducts(head);
     
    
     return 0;
