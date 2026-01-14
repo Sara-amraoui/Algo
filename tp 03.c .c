@@ -109,10 +109,10 @@ int main() {
     Product p3 = {103, "Keyboard", 75};
     Product p4 = {104, "Monitor", 300};
 
-    head = insertAtBeginning(head, p1);
-    head = insertAtEnd(head, p2);
-    head = insertAtBeginning(head, p3);
+    head = insertAtEnd(head, p3);
+    head = insertAtFirst(head, p2);
     head = insertAtEnd(head, p4);
+    head = insertAtFirst(head, p1);
 
     printf("\nProducts in circular list:\n");
     displayProducts(head);
